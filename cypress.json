@@ -1,0 +1,14 @@
+{
+  "reporter": "mochawesome",
+  "baseUrl": "https://www.indiegogo.com",
+  "reporterOptions": {
+    "reportDir": "cypress/reports/mochareports/mocha",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  },
+  "defaultCommandTimeout": 20000,
+  "video": false,
+  "viewportWidth": 1920,
+  "viewportHeight": 1080
+}

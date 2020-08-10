@@ -1,0 +1,44 @@
+{
+  "name": "javacript.automationframework",
+  "version": "1.0.0",
+  "description": "An automation framework in javacript language",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run scripts",
+    "test:chrome": "npm run pretest && npm run scripts:chrome && npm run posttest",
+    "test:electron": "npm run pretest && npm run scripts:electron && npm run posttest",
+    "test:chrome:headless": "npm run pretest && npm run scripts:chrome:headless  && npm run posttest",
+    "test:electron:headless": "npm run pretest && npm run scripts:electron:headless  && npm run posttest",
+    "pretest": "npm run clean:reports",
+    "scripts": "cypress run",
+    "scripts:chrome": "cypress run --browser chrome",
+    "scripts:electron": "cypress run --browser electron",
+    "scripts:chrome:headless": "cypress run --browser chrome --headless",
+    "scripts:electron:headless": "cypress run --browser electron --headless",
+    
+    "posttest": "npm run combine-reports && npm run generate-report",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports  && mkdir cypress\\reports\\mochareports",
+    "combine-reports": "npx mochawesome-merge --reportDir  cypress\\reports\\mochareports\\mocha>cypress\\reports\\mochareports\\report.json",
+    "generate-report": "npx marge cypress/reports/mochareports/report.json -f report -o cypress/html_report --timestamp default"
+  },
+  "author": "tuanpm6",
+  "devDependencies": {
+    "chai": "*",
+    "cypress": "^4.8.0",
+    "cypress-multi-reporters": "^1.4.0",
+    "cypress-xpath": "^1.6.0",
+    "fs": "0.0.1-security",
+    "marge": "^1.0.1",
+    "mocha": "^5.2.0",
+    "mochawesome": "^4.1.0",
+    "mochawesome-merge": "^2.0.1",
+    "mochawesome-report-generator": "^4.0.1",
+    "npx": "10.2.2",
+    "papaparse": "5.2.0",
+    "xlsx": "0.16.2"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "npx": "^10.2.2"
+  }
+}
